@@ -216,32 +216,10 @@ npm run dev
 * Backend: `http://localhost:5000`
 
 ---
-
-## 🧪 Key Learnings
-
-* JWT-based authentication & authorization
-* Middleware-driven backend security
-* RESTful API design
-* Frontend–backend integration
-* Error handling with correct HTTP status codes
-* Real-world auth and profile workflows
-
----
-
-## 🚧 Future Enhancements
-
-* Company logo upload
-* Refresh token mechanism
-* Role-based access control
-* UI improvements (Tailwind / Material UI)
-* Deployment (Render / Railway)
-
----
-
 ## 👨‍💻 Author
 
 **Shubham Verma**
 Full-Stack Developer 
 
-Just tell me 👌
+
 
