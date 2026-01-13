@@ -71,13 +71,15 @@ export const login = async (req, res) => {
     }
 
     // ✅ FIX HERE
-    const userId = user.id;
-
     const token = jwt.sign(
-      { id: userId, email: user.email },
-      process.env.JWT_ACCESS_SECRET,
-      { expiresIn: "1d" }
-    );
+  {
+    userId: user.id,     // 🔑 REQUIRED
+    email: user.email
+  },
+  process.env.JWT_ACCESS_SECRET,
+  { expiresIn: "1h" }
+);
+
 
     res.status(200).json({
       message: "Login successful",

@@ -37,6 +37,12 @@ export default function Dashboard() {
       ) : (
         <p>No user data</p>
       )}
+<button
+  onClick={() => navigate("/company")}
+  style={{ padding: "10px", background: "#1976d2", color: "#fff" }}
+>
+  Company Profile
+</button>
 
       <button onClick={handleLogout} style={styles.button}>
         Logout
