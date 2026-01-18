@@ -1,0 +1,104 @@
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f5ff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.login-card {
+  width: 900px;
+  height: 500px;
+  display: flex;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* LEFT */
+.login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #d7b5ff, #6b5bff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* RIGHT */
+.login-right {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h2 {
+  margin-bottom: 30px;
+}
+
+.login-right label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.login-right input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.login-right button {
+  width: 100%;
+  padding: 12px;
+  background: #6b7cff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-right button:hover {
+  background: #5566ff;
+}
+
+.otp-link {
+  font-size: 13px;
+  color: #6b7cff;
+  cursor: pointer;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.forgot {
+  font-size: 13px;
+  color: #777;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup-text span {
+  color: #6b7cff;
+  font-weight: bold;
+  cursor: pointer;
+}

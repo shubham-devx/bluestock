@@ -1,72 +1,55 @@
+🚀 Company Registration & Verification Module
 
-# 🚀 Company Profile Management System
+A full-stack application that allows users to register, authenticate, verify identity, and manage company profiles, built as part of an internship warm-up assignment.
 
-A **full-stack web application** that implements **secure user authentication**, **JWT-based authorization**, and **company profile management**.
-Built as part of an **Internship Warm-up Assignment** to demonstrate real-world backend and frontend integration.
+This project demonstrates real-world backend + frontend integration, secure authentication, and clean UI workflows.
 
----
+⸻
 
-## ✨ Features
+📌 Project Objective
 
-### 🔐 Authentication
+The goal of this project is to build a secure company onboarding system where:
+	•	Users register and log in securely
+	•	Authentication is handled via Firebase + JWT
+	•	Users can create and manage a company profile
+	•	Verification status (email & mobile) is clearly visible
+	•	APIs are protected and scalable
 
-* User registration with **hashed passwords** (bcrypt)
-* User login with **JWT access tokens**
-* Secure logout by clearing stored tokens
-* Protected routes on both **backend & frontend**
+⸻
 
-### 👤 User Management
+🧱 Tech Stack Used
 
-* JWT payload contains authenticated user identity (`userId`, `email`)
-* Logged-in user details decoded and displayed on frontend
+Frontend
+	•	React.js (Vite)
+	•	Firebase Authentication (Email/Password)
+	•	Axios
+	•	React Router
+	•	Plain CSS (inline styling)
+	•	JWT decoding for user session
 
-### 🏢 Company Profile
+Backend
+	•	Node.js
+	•	Express.js
+	•	PostgreSQL
+	•	Firebase Admin SDK
+	•	JWT (JSON Web Tokens)
+	•	bcrypt (password hashing)
+	•	CORS & dotenv
 
-* Create company profile (one profile per user)
-* Fetch logged-in user’s company profile
-* Update existing company profile
-* Proper REST behavior:
+Database
+	•	PostgreSQL 15
+	•	Two main tables:
+	•	users
+	•	company_profile
 
-  * `404` when profile does not exist
-  * `401 / 403` for unauthorized access
+⸻
 
-### 🛡 Security Practices
+🗂️ Project Structure
 
-* Password hashing with bcrypt
-* JWT verification middleware
-* Authorization via `Bearer <token>`
-* Route-level access protection
+Backend
 
----
-
-## 🧱 Tech Stack
-
-### Backend
-
-* Node.js
-* Express.js
-* PostgreSQL
-* JWT (jsonwebtoken)
-* bcrypt
-* dotenv
-* cors
-
-### Frontend
-
-* React (Vite)
-* React Router
-* Axios
-* jwt-decode
-
----
-
-## 📁 Project Structure
-
-### Backend
-
-```text
 backend/
-│── src/
+├── src/
 │   ├── controllers/
 │   │   ├── authController.js
 │   │   └── companyController.js
@@ -74,152 +57,104 @@ backend/
 │   │   ├── authRoutes.js
 │   │   └── companyRoutes.js
 │   ├── middleware/
-│   │   └── authMiddleware.js
+│   │   ├── authMiddleware.js
+│   │   └── firebaseAuthMiddleware.js
 │   ├── config/
-│   │   └── db.js
+│   │   ├── db.js
+│   │   └── firebase.js
 │   ├── app.js
 │   └── server.js
-│── .env
-│── package.json
-```
+└── .env
 
-### Frontend
+Frontend
 
-```text
 frontend/
-│── src/
+├── src/
 │   ├── pages/
 │   │   ├── Login.jsx
-│   │   ├── Register.jsx
 │   │   ├── Dashboard.jsx
-│   │   ├── CompanyProfile.jsx
-│   │   └── ProtectedRoute.jsx
+│   │   └── CompanyProfile.jsx
+│   ├── firebase.js
 │   ├── App.jsx
 │   └── main.jsx
-│── package.json
-```
-
----
-
-## ⚙️ Environment Variables
-
-Create a `.env` file inside the `backend/` directory:
-
-```env
-PORT=5000
-DATABASE_URL=postgresql://username:password@localhost:5432/company_db
-JWT_ACCESS_SECRET=your_secret_key
-```
-
----
-
-## 🗄 Database Schema
-
-### Users Table
-
-```sql
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(100) UNIQUE NOT NULL,
-  password TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### Company Profiles Table
-
-```sql
-CREATE TABLE company_profiles (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-  company_name VARCHAR(150) NOT NULL,
-  website TEXT,
-  description TEXT
-);
-```
-
----
-
-## 🔗 API Endpoints
-
-### Authentication
-
-| Method | Endpoint    | Description                |
-| ------ | ----------- | -------------------------- |
-| POST   | `/register` | Register new user          |
-| POST   | `/login`    | Login user and receive JWT |
-
-### Company Profile (Protected)
-
-| Method | Endpoint           | Description                  |
-| ------ | ------------------ | ---------------------------- |
-| POST   | `/company/profile` | Create company profile       |
-| GET    | `/company/profile` | Get logged-in user’s company |
-| PUT    | `/company/profile` | Update company profile       |
-
----
-
-## 🔐 JWT Authentication Flow
-
-1. User logs in
-2. Backend generates JWT containing:
-
-   ```json
-   {
-     "userId": 1,
-     "email": "user@example.com"
-   }
-   ```
-3. Frontend stores token in `localStorage`
-4. Token sent in every protected request:
-
-   ```
-   Authorization: Bearer <token>
-   ```
-5. Backend middleware verifies token
-6. Controllers use `req.user.userId`
-
----
-
-## 🖥 Frontend Flow
-
-* Login → Dashboard
-* Dashboard displays logged-in user information
-* Dashboard → Company Profile
-
-  * No profile → Create mode
-  * Existing profile → Edit mode
-* Logout clears token and blocks protected routes
-
----
-
-## ▶️ Run Locally
-
-### Backend
-
-```bash
-cd backend
-npm install
-npm run dev
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-* Frontend: `http://localhost:5173`
-* Backend: `http://localhost:5000`
-
----
-## 👨‍💻 Author
-
-**Shubham Verma**
-Full-Stack Developer 
+└── .env
 
 
+⸻
 
+🔐 Authentication Flow
+
+Registration
+	1.	User registers using Firebase Authentication
+	2.	Password is also hashed and stored in PostgreSQL (assignment requirement)
+	3.	User record is created in the users table
+
+Login
+	1.	User logs in using Firebase (email & password)
+	2.	Firebase returns an ID token
+	3.	Backend verifies Firebase token
+	4.	Backend generates a JWT (90 days)
+	5.	JWT is stored in frontend (localStorage)
+
+⸻
+
+🧾 Company Profile Flow
+	•	After login, user navigates to Dashboard
+	•	User can:
+	•	Create company profile (first time)
+	•	Update company profile (later)
+	•	Company profile is linked using user_id
+	•	Only one company per user
+
+⸻
+
+📊 Dashboard Features
+	•	Shows logged-in user details (decoded JWT)
+	•	Shows verification status badges
+	•	Email Verified
+	•	Mobile Verification (planned)
+	•	Navigation to:
+	•	Company Profile
+	•	Logout
+
+⸻
+
+🔒 Security Measures Implemented
+	•	JWT-based route protection
+	•	Firebase token verification
+	•	Password hashing using bcrypt
+	•	Protected company APIs
+	•	Environment variables for secrets
+	•	CORS enabled with restricted origin
+
+⸻
+
+🧪 API Endpoints
+
+Auth APIs
+
+Method	Endpoint	Description
+POST	/register	Register user
+POST	/firebase-login	Firebase login → JWT
+GET	/profile	Get logged-in user
+
+Company APIs
+
+Method	Endpoint	Description
+POST	/company/profile	Create company
+GET	/company/profile	Get company
+PUT	/company/profile	Update company
+
+(All company routes are JWT protected)
+
+⸻
+
+⚠️ Current Limitations (Planned Enhancements)
+	•	Mobile OTP verification UI (Firebase SMS)
+	•	Email verification link handling
+	•	Image upload (Cloudinary)
+	•	Redux Toolkit integration
+	•	Multi-step company form
+	•	Unit testing
+
+These are intentionally left as future scope and clearly explained during presentation.
